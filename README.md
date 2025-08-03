@@ -1,65 +1,74 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/vov8w5Ad)
+# 🧩 Dungeon Explorer - Juego de Aventura en Java
+![App Screenshot](https://bing.com/th/id/BCO.ad2da7c2-f437-43c0-bbb0-049bd4801f7e.png)
+**Dungeon Explorer** es un juego de exploración narrativa con combate, objetos mágicos y decisiones que afectan el recorrido. El jugador despierta en una mazmorra misteriosa y debe avanzar por salas llenas de enemigos, tesoros y secretos. Cada partida es diferente gracias a la reconfiguración dinámica de las salas.
 
-**Objetivo del Ejercicio**
+---
 
-Desarrollar un juego de exploración de mazmorras en Java que utilice los cuatro pilares de la programación orientada a objetos: encapsulación, herencia, polimorfismo y abstracción. El juego debe incluir clases, interfaces y la interacción entre diferentes tipos de objetos en la mazmorra.
+## 🎮 Dinámica del Juego
 
+- **Exploración por salas**: El jugador avanza por pasillos y salas que pueden contener enemigos, armas, tesoros o eventos narrativos.
+- **Sistema de combate**: Enfrenta enemigos con habilidades especiales. El daño recibido depende de tu salud, defensa y arma equipada.
+- **Inventario y armas**: Puedes recoger armas y equiparlas en cualquier momento escribiendo `inventario`.
+- **Narrativa interactiva**: Cada sala tiene ambientación única, con descripciones inspiradas en anime y fantasía oscura.
+- **Eventos aleatorios**: Algunas salas secretas como `TreasureRoom2` pueden aparecer aleatoriamente, ofreciendo objetos mágicos o desafíos inesperados.
+- **Decisiones del jugador**: Puedes elegir avanzar (`si`), detenerte (`no`), o gestionar tu equipo (`inventario`) en cada sala.
 
-**Descripción del Juego**
+---
 
-El jugador debe explorar una mazmorra compuesta de diferentes tipos de salas. Cada sala puede estar vacía, contener un tesoro o albergar un enemigo. El jugador debe navegar por estas salas, recoger objetos y enfrentarse a enemigos, todo mientras intenta mantenerse con vida.
+## 🗂️ Estructura del Proyecto
+```
+dungeon-explorer-jpizarroc99/
+├── src/
+│   ├── DungeonGame/
+│   │   └── Main.java               # Punto de entrada del juego
+│   ├── Interfaces/
+│   │   ├── GameObject.java         # Interfaz base para objetos del juego
+│   │   └── Room.java               # Interfaz para salas
+│   ├── Intros_Bases/
+│   │   └── IntroRoom.java          # Sala de introducción narrativa
+│   ├── Jugador/
+│   │   └── Player.java             # Clase que representa al jugador
+│   ├── Objetos/
+│   │   ├── Amuleto.java            # Objeto mágico especial
+│   │   └── Arma.java               # Clase base para armas
+│   └── Salas/
+│       ├── ArsenalRoom.java        # Sala con armas
+│       ├── ArsenalRoom2.java       # Sala con armas avanzadas
+│       ├── EnemyRoomBase.java      # Clase base para enemigos
+│       ├── EnemyRoomLevel1.java    # Enemigo nivel 1
+│       ├── EnemyRoomLevel2.java    # Enemigo nivel 2
+│       ├── EnemyRoomLevel3.java    # Enemigo nivel 3
+│       ├── EnemyRoomLevel4.java    # Enemigo nivel 4
+│       ├── EnemyRoomLevel5.java    # Jefe final
+│       ├── TreasureRoom.java       # Sala de tesoro estándar
+│       ├── TreasureRoom2.java      # Sala secreta con amuleto
+│       └── VacuumRoom.java         # Sala narrativa sin enemigos
+├── out/                            # Archivos compilados
+│   └── production/
+│       └── dungeon-explorer-jpizarroc99/
+├── .idea/                          # Configuración del proyecto en IntelliJ
+└── README.md                       # Documentación del juego
+```
+---
 
+## 🛠️ Tecnologías Utilizadas
 
-**Reglas del Juego**
+- **Lenguaje**: Java
+- Programación orientada a objetos (OOP)
+- Código modular con clases por tipo de sala
+- Uso de `Scanner` para interacción por consola
 
-1- El jugador comienza con un nombre y una cantidad inicial de puntos de vida.
+---
 
-2- El jugador puede moverse a través de varias salas en la mazmorra.
+## 🎯 Objetivo del Proyecto
 
-3- Las salas pueden ser de tres tipos: vacía, con tesoro o con enemigo.
+Este juego fue creado con fines educativos y creativos, buscando:
 
-4- El jugador puede recoger tesoros que se añaden a su inventario.
+- Practicar buenas prácticas de programación en Java.
+- Diseñar sistemas de juego modulares y escalables.
+- Integrar narrativa interactiva con mecánicas de combate y exploración.
+---
 
-5- El jugador puede recibir daño de los enemigos y perder puntos de vida.
+## 👩‍💻 Autora
 
-6- El juego termina cuando el jugador ha explorado todas las salas o ha perdido todos sus puntos de vida.
-
-
-
-**Requisitos Técnicos**
-
-1- Interfaces y Abstracción: Define interfaces para las salas y los objetos interactuables en el juego.
-
-2- Encapsulación: Utiliza atributos privados y métodos públicos para manejar el estado del jugador y de las salas.
-
-3- Herencia: Crea clases concretas que implementen las interfaces definidas para representar diferentes tipos de salas.
-
-4- Polimorfismo: Usa referencias de las interfaces para manejar los diferentes tipos de salas y objetos en el juego.
-
-
-
-**Especificaciones Detalladas**
-
-Paso 1: Crear las interfaces básicas
-  - Define una interfaz Room para representar una sala en la mazmorra.
-  - Define una interfaz GameObject para representar objetos interactuables en la mazmorra.
-
-Paso 2: Crear la clase Player
-  - Define una clase Player que encapsule los datos y comportamientos del jugador.
-  - La clase debe incluir atributos como name, health, e inventory.
-  - Proporciona métodos para que el jugador pueda recibir daño, recoger objetos y mostrar su estado actual.
-
-Paso 3: Crear clases concretas de Room
-  - Crea una clase EmptyRoom que represente una sala vacía.
-  - Crea una clase TreasureRoom que represente una sala con un tesoro.
-  - Crea una clase EnemyRoom que represente una sala con un enemigo.
-
-Paso 4: Crear la clase principal del juego
-  - Define una clase principal que inicialice el jugador y una serie de salas.
-  - Implementa un bucle que permita al jugador moverse por las salas.
-  - Maneja las interacciones del jugador con las salas y los objetos.
-
-**Instrucciones Adicionales**
-  - Asegúrate de manejar adecuadamente las interacciones entre el jugador y los diferentes tipos de salas.
-  - Considera agregar más salas y enemigos para hacer el juego más interesante.
-  - Puedes implementar características adicionales como la posibilidad de que el jugador use objetos del inventario.
+**Javiera Pizarro** 

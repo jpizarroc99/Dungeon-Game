@@ -5,7 +5,7 @@ import Jugador.Player;
 import Objetos.Amuleto;
 import java.util.Random;
 
-public class TrasureRoom2 implements Room {
+public class TreasureRoom2 implements Room {
     @Override
     public void entrar(Player player) {
         System.out.println("Has entrado a una sala de tesoros curativos...");
@@ -20,5 +20,10 @@ public class TrasureRoom2 implements Room {
         } else {
             System.out.println("La sala está vacía... solo el eco de tu esperanza resuena.");
         }
+    }
+
+    @Override
+    public String getPasilloDescripcion() {
+        return "";
     }
 }

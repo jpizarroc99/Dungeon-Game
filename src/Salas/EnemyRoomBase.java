@@ -3,36 +3,61 @@ package Salas;
 import Interfaces.Room;
 import Jugador.Player;
 
-public class EnemyRoom implements Room {
+import java.util.Scanner;
+
+
+
+public class EnemyRoomBase implements Room {
     private String nombreEnemigo;
     private int saludEnemigo;
     private int ataqueEnemigo;
 
-    public EnemyRoom() {
-        this.nombreEnemigo = "👹 Troll novato";
-        this.saludEnemigo = 20;
-        this.ataqueEnemigo = 5;
+
+    public EnemyRoomBase(String nombreEnemigo, int saludEnemigo, int ataqueEnemigo) {
+        this.nombreEnemigo = nombreEnemigo;
+        this.saludEnemigo = saludEnemigo;
+        this.ataqueEnemigo = ataqueEnemigo;
     }
 
     @Override
     public void entrar(Player player) {
-        System.out.println("Has entrado en una sale con un enemigo: " + nombreEnemigo);
-        System.out.println("Combate iniciado");
+        System.out.println("⚔️ Ha aparecido un enemigo: " + nombreEnemigo);
+        Scanner teclado = new Scanner(System.in);
 
-        while (saludEnemigo > 0 && player.estaVivo()) {
-            int dañoJugador = player.ataqueTotal();
-            saludEnemigo -= dañoJugador;
-            System.out.println("Atacaste a " + nombreEnemigo + " <UNK>: " + saludEnemigo + " le has causado "+ dañoJugador + " de daño. Salud restante del enemigo. " + Math.max(0,saludEnemigo));
-
-            if (saludEnemigo <= 0) {
-                System.out.println("Has derrotado a " + nombreEnemigo + "!");
-                break;
+        while (saludEnemigo > 0 && player.getSalud() > 0) {
+            // Turno del jugador
+            int daño = player.getAtaqueTotal();
+            if (Math.random() < 0.2) {
+                System.out.println(nombreEnemigo + " esquivo tu ataque!");
+            } else {
+                saludEnemigo -= daño;
+                System.out.println("💥 Atacas a " + nombreEnemigo + " le has causado " + daño + " de daño.");
             }
-            player.recibirDaño(ataqueEnemigo);
-            if(!player.estaVivo()) {
-                System.out.println("💀 Has sido derrotado por "+ nombreEnemigo);
-                break;
+            //Modo furia enemigo
+            if(saludEnemigo > 0 && saludEnemigo < 20) {
+                ataqueEnemigo += 5;
+                System.out.println(nombreEnemigo + " ha entrado en modo fuiria ¡cuidado!.");
             }
+            //Turno del enemigo
+            if (saludEnemigo > 0) {
+                int ataqueFinal = ataqueEnemigo;
+                if (Math.random() < 0.1) {
+                    ataqueFinal *= 2;
+                    System.out.println("¡" + nombreEnemigo + " ha lanzado un ataque crítico!");
+                }
+                player.recibirDaño(ataqueFinal);
+            }
+            //Mostrar estado
+            System.out.println(" Tu salud " + player.getSalud() + " | 😈 Salud de " + nombreEnemigo + ": " + saludEnemigo);
         }
+        if (player.getSalud() <=0 ) {
+            System.out.println("💀 Has sido derrotado por " + nombreEnemigo + ".");
+        } else {
+            System.out.println("🏆 Has vencido a " + nombreEnemigo + "!");
+        }
+    }
+    @Override
+    public String getPasilloDescripcion () {
+        return "Un pasillo silencioso antes de enfrentar al enemigo.";
     }
 }
