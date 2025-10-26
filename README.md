@@ -1,5 +1,6 @@
 # 🧩 Dungeon Explorer - Juego de Aventura en Java
-![App Screenshot](https://bing.com/th/id/BCO.ad2da7c2-f437-43c0-bbb0-049bd4801f7e.png)
+![App Screenshot](../dungeon-explorer-jpizarroc99/src/Assets/dungeon_img..png)
+
 **Dungeon Explorer** es un juego de exploración narrativa con combate, objetos mágicos y decisiones que afectan el recorrido. El jugador despierta en una mazmorra misteriosa y debe avanzar por salas llenas de enemigos, tesoros y secretos. Cada partida es diferente gracias a la reconfiguración dinámica de las salas.
 
 ---
@@ -54,7 +55,7 @@ dungeon-explorer-jpizarroc99/
 ## 🛠️ Tecnologías Utilizadas
 
 - **Lenguaje**: Java
-- Programación orientada a objetos (OOP)
+- Programación orientada a objetos (POO)
 - Código modular con clases por tipo de sala
 - Uso de `Scanner` para interacción por consola
 
